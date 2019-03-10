@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Film;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
 
 class FilmController extends Controller
 {
@@ -96,7 +97,11 @@ class FilmController extends Controller
     {
       $data = $request->all();
 
+      $poster =  Storage::disk('public')->put('films_poster', $data['poster_file']);
+
+
       $data['slug'] = Str::slug($data['title']);
+      $data['poster'] =  $poster;
 
       $film->update($data);
 

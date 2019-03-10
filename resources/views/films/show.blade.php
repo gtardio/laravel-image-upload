@@ -6,6 +6,8 @@
       <div class="col-12">
         <h1>Film: {{ $film->title }}</h1>
 
+        <img src="{{ asset('storage/'. $film->poster) }}" alt="">
+
 
         <ul>
           <li>Id: {{ $film->id }}</li>
